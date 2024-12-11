@@ -72,7 +72,7 @@ class _LogInState extends State<LogIn> {
                               decoration: InputDecoration(hintText: 'Password',hintStyle: AppWidget.semiBoldTextFeildStyle(),prefixIcon: Icon(Icons.password_outlined)),),
                             GestureDetector(
                               onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Forgotpass()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgotPassword()));
                               },
                               child: Container(
                                 alignment: Alignment.topRight,
