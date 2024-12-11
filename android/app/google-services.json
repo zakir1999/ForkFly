@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "50839260516",
+    "project_id": "forkfly",
+    "storage_bucket": "forkfly.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50839260516:android:b6e03a1d90fb8d32b97e71",
+        "android_client_info": {
+          "package_name": "com.example.food"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsREqJHQNTCuF3S0n5CHd2WCWKoEZDOOc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
