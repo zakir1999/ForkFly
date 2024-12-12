@@ -21,10 +21,10 @@ late Profile profile;
 late Order order;
 @override
 void initState(){
-  homepage=Home();
-  wallet=Wallet();
-  profile=Profile();
-  order=Order();
+  homepage=const Home();
+  wallet=const Wallet();
+  profile=const Profile();
+  order=const Order();
   pages=[homepage,order,wallet,profile];
   super.initState();
 }
@@ -35,14 +35,14 @@ void initState(){
           height: 65.0,
           backgroundColor: Colors.white,
           color: Colors.black,
-          animationDuration: Duration(milliseconds: 500),
+          animationDuration: const Duration(milliseconds: 500),
           onTap: (int index){
             setState(() {
               currentTabIndex=index;
             });
           },
 
-          items: [
+          items: const [
         Icon(Icons.home_outlined,color: Colors.white,),
         Icon(Icons.shopping_bag_outlined,color: Colors.white,),
         Icon(Icons.wallet_outlined,color: Colors.white,),

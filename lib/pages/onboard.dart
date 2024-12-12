@@ -42,7 +42,7 @@ class _OnboardState extends State<Onboard> {
                 },
                 itemBuilder: (_, i) {
                   return Padding(
-                    padding: EdgeInsets.only(top: 40,left: 20,right: 20),
+                    padding: const EdgeInsets.only(top: 40,left: 20,right: 20),
                     child: Column(
                       children: [
                         Image.asset(
@@ -51,14 +51,14 @@ class _OnboardState extends State<Onboard> {
                           width: MediaQuery.of(context).size.width / 1.3,
                           fit: BoxFit.fill,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40.0,
                         ),
                         Text(
                           contents[i].tittle,
                           style: AppWidget.semiBoldTextFeildStyle(),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20.0,
                         ),
                         Text(
@@ -83,10 +83,10 @@ class _OnboardState extends State<Onboard> {
             onTap: () {
               if (currentindex == contents.length - 1) {
                 Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (context) => SignUp()));
+                    context, MaterialPageRoute(builder: (context) => const SignUp()));
               }
               _controller.nextPage(
-                  duration: Duration(
+                  duration: const Duration(
                     milliseconds: 100,
                   ),
                   curve: Curves.bounceIn);
@@ -94,7 +94,7 @@ class _OnboardState extends State<Onboard> {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
@@ -103,9 +103,9 @@ class _OnboardState extends State<Onboard> {
                   ]
               )),
               height: 60.0,
-              margin: EdgeInsets.all(40),
+              margin: const EdgeInsets.all(40),
               width: double.infinity,
-              child: Center(
+              child: const Center(
                 child: Text(
                   "Next",
                   style: TextStyle(color: Colors.white,fontSize: 20.0,fontWeight:FontWeight.bold),
@@ -122,7 +122,7 @@ class _OnboardState extends State<Onboard> {
     return Container(
       height: 10.0,
       width: currentindex == index ? 18 : 7,
-      margin: EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6.0), color: Colors.black38),
     );

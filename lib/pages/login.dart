@@ -21,7 +21,7 @@ class _LogInState extends State<LogIn> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height/2.5,
-                decoration: BoxDecoration(gradient: LinearGradient(
+                decoration: const BoxDecoration(gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
@@ -34,14 +34,14 @@ class _LogInState extends State<LogIn> {
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height/3),
                 height: MediaQuery.of(context).size.height/2,
                 width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40.0))),
                 child:
-                 Text(""),),
+                 const Text(""),),
               Container(
                 //padding: EdgeInsets.only(left: MediaQuery.of(context).size.width/4),
-                margin: EdgeInsets.only(top:30.0,left: 20,right: 20.0),
+                margin: const EdgeInsets.only(top:30.0,left: 20,right: 20.0),
                 child: Column(
 
                   children: [
@@ -50,29 +50,29 @@ class _LogInState extends State<LogIn> {
                         "images/foodlogo.png",
                       width: MediaQuery.of(context).size.width/2,fit: BoxFit.cover,),
                     ),
-                    SizedBox(height: 10.0,),
+                    const SizedBox(height: 10.0,),
                     Material(
                       borderRadius: BorderRadius.circular(20.0),
                       elevation: 5.0,
                       child: Container(
-                        padding: EdgeInsets.only(left: 20,right: 20),
+                        padding: const EdgeInsets.only(left: 20,right: 20),
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height/2.5,
                         decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20.0)),
                         child: Column(
                           children: [
-                            SizedBox(height: 20.0,),
+                            const SizedBox(height: 20.0,),
                             Text("Login",style: AppWidget.HeadlineTextFeildStyle(),),
                           TextField(
 
-                            decoration: InputDecoration(hintText: 'Email',hintStyle: AppWidget.semiBoldTextFeildStyle(),prefixIcon: Icon(Icons.email_outlined)),),
-                            SizedBox(height: 20.0,),
+                            decoration: InputDecoration(hintText: 'Email',hintStyle: AppWidget.semiBoldTextFeildStyle(),prefixIcon: const Icon(Icons.email_outlined)),),
+                            const SizedBox(height: 20.0,),
                             TextField(
                               obscureText: true,
-                              decoration: InputDecoration(hintText: 'Password',hintStyle: AppWidget.semiBoldTextFeildStyle(),prefixIcon: Icon(Icons.password_outlined)),),
+                              decoration: InputDecoration(hintText: 'Password',hintStyle: AppWidget.semiBoldTextFeildStyle(),prefixIcon: const Icon(Icons.password_outlined)),),
                             GestureDetector(
                               onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>ForgotPassword()));
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>const ForgotPassword()));
                               },
                               child: Container(
                                 alignment: Alignment.topRight,
@@ -80,15 +80,15 @@ class _LogInState extends State<LogIn> {
                                  "Forgot Password",style: AppWidget.semiBoldTextFeildStyle(),
                               ),),
                             ),
-                            SizedBox(height: 80,),
+                            const SizedBox(height: 80,),
                             Material(
                               elevation: 5.0,
                               borderRadius: BorderRadius.circular(20.0),
                               child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 8.0),
+                                padding: const EdgeInsets.symmetric(vertical: 8.0),
                                 width: 200,
-                                decoration: BoxDecoration(color: Color(0xffff5722),borderRadius: BorderRadius.circular(20.0)),
-                                child: Center(
+                                decoration: BoxDecoration(color: const Color(0xffff5722),borderRadius: BorderRadius.circular(20.0)),
+                                child: const Center(
                                   child: Text(
                                     'Login',style: TextStyle(
                                     color: Colors.white,
@@ -106,20 +106,20 @@ class _LogInState extends State<LogIn> {
                           ],
                         ),),
                     ),
-                    SizedBox(height: 20.0,),
+                    const SizedBox(height: 20.0,),
                     Container(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Don't have a account?",style: AppWidget.semiBoldTextFeildStyle(),),
-                          SizedBox(width: 10.0,),
+                          const SizedBox(width: 10.0,),
                           Material(
                             elevation: 5.0,
                             borderRadius: BorderRadius.circular(5.0),
                             child: GestureDetector(
 
                                 onTap: (){
-                                  Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUp()));
+                                  Navigator.push(context,MaterialPageRoute(builder: (context)=>const SignUp()));
                                 },
                                 child: Text("SignUp",style: AppWidget.semiBoldTextFeildStyle(),)),
                           )
