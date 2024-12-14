@@ -128,7 +128,7 @@ class _HomeState extends State<Home> {
                         children: [
                           SizedBox(
                               width:MediaQuery.of(context).size.width/2,
-                              child: Text("Hallywin pizza",style: AppWidget.semiBoldTextFeildStyle(),),
+                              child: Text("Vanilla ice-cream",style: AppWidget.semiBoldTextFeildStyle(),),
                           ),
                           const SizedBox(height: 10.0),
                           SizedBox(
