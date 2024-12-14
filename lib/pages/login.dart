@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food/pages/forgotpassword.dart';
 import 'package:food/pages/signup.dart';
@@ -10,6 +12,23 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+
+  String email="",password="";
+  final _formkey=GlobalKey<FormState>();
+  TextEditingController useremailcontroller=new TextEditingController();
+  TextEditingController userpasswordcontroller=new TextEditingController();
+  userLogin() async{
+    try{
+      await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+    }on FirebaseAuthException catch (e){
+      if(e.code=='user-not-found'){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No user found for that Email!',style: TextStyle(fontSize: 18.0,color:Colors.black),)));
+
+      }else if(e.code=="wrong-password"){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Wrong password provided by user.',style: TextStyle(fontSize: 18.0,color: Colors.black),)));
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,51 +78,79 @@ class _LogInState extends State<LogIn> {
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height/2.5,
                         decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(20.0)),
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 20.0,),
-                            Text("Login",style: AppWidget.HeadlineTextFeildStyle(),),
-                          TextField(
-
-                            decoration: InputDecoration(hintText: 'Email',hintStyle: AppWidget.semiBoldTextFeildStyle(),prefixIcon: const Icon(Icons.email_outlined)),),
-                            const SizedBox(height: 20.0,),
-                            TextField(
-                              obscureText: true,
-                              decoration: InputDecoration(hintText: 'Password',hintStyle: AppWidget.semiBoldTextFeildStyle(),prefixIcon: const Icon(Icons.password_outlined)),),
-                            GestureDetector(
-                              onTap: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>const ForgotPassword()));
+                        child: Form(
+                          key:_formkey,
+                          child: Column(
+                            children: [
+                              const SizedBox(height: 20.0,),
+                              Text("Login",style: AppWidget.HeadlineTextFeildStyle(),),
+                            TextFormField(
+                              controller:useremailcontroller,
+                              validator: (value){
+                                if(value==null || value.isEmpty){
+                                  return 'Please Enter Password';
+                                }
+                                return null;
                               },
-                              child: Container(
-                                alignment: Alignment.topRight,
-                                child: Text(
-                                 "Forgot Password",style: AppWidget.semiBoldTextFeildStyle(),
-                              ),),
-                            ),
-                            const SizedBox(height: 80,),
-                            Material(
-                              elevation: 5.0,
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                                width: 200,
-                                decoration: BoxDecoration(color: const Color(0xffff5722),borderRadius: BorderRadius.circular(20.0)),
-                                child: const Center(
+
+                              decoration: InputDecoration(hintText: 'Email',hintStyle: AppWidget.semiBoldTextFeildStyle(),prefixIcon: const Icon(Icons.email_outlined)),),
+                              const SizedBox(height: 20.0,),
+                              TextFormField(
+                                controller: userpasswordcontroller,
+                                validator: (value){
+                                  if(value==null || value.isEmpty){
+                                    return 'Please Enter Password';
+                                  }
+                                  return null;
+                                },
+                                obscureText: true,
+                                decoration: InputDecoration(hintText: 'Password',hintStyle: AppWidget.semiBoldTextFeildStyle(),prefixIcon: const Icon(Icons.password_outlined)),),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>const ForgotPassword()));
+                                },
+                                child: Container(
+                                  alignment: Alignment.topRight,
                                   child: Text(
-                                    'Login',style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: 'poppins',
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold
-                                  ),
+                                   "Forgot Password",style: AppWidget.semiBoldTextFeildStyle(),
+                                ),),
+                              ),
+                              const SizedBox(height: 80,),
+                              GestureDetector(
+                                onTap:(){
+                                  if(_formkey.currentState!.validate()){
+                                    setState(() {
+                                      email=useremailcontroller.text;
+                                      password=userpasswordcontroller.text;
+                                    });
+                                  }
+                                  userLogin();
+                                },
+                                child: Material(
+                                  elevation: 5.0,
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                    width: 200,
+                                    decoration: BoxDecoration(color: const Color(0xffff5722),borderRadius: BorderRadius.circular(20.0)),
+                                    child: const Center(
+                                      child: Text(
+                                        'Login',style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'poppins',
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold
+                                      ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
 
 
 
-                          ],
+                            ],
+                          ),
                         ),),
                     ),
                     const SizedBox(height: 20.0,),
