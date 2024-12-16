@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food/pages/forgotpassword.dart';
 import 'package:food/pages/signup.dart';
@@ -15,17 +14,17 @@ class _LogInState extends State<LogIn> {
 
   String email="",password="";
   final _formkey=GlobalKey<FormState>();
-  TextEditingController useremailcontroller=new TextEditingController();
-  TextEditingController userpasswordcontroller=new TextEditingController();
+  TextEditingController useremailcontroller=TextEditingController();
+  TextEditingController userpasswordcontroller=TextEditingController();
   userLogin() async{
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
     }on FirebaseAuthException catch (e){
       if(e.code=='user-not-found'){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No user found for that Email!',style: TextStyle(fontSize: 18.0,color:Colors.black),)));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No user found for that Email!',style: TextStyle(fontSize: 18.0,color:Colors.black),)));
 
       }else if(e.code=="wrong-password"){
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Wrong password provided by user.',style: TextStyle(fontSize: 18.0,color: Colors.black),)));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Wrong password provided by user.',style: TextStyle(fontSize: 18.0,color: Colors.black),)));
       }
     }
   }

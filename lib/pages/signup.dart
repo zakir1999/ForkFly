@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:food/pages/bottomnav.dart';
 import 'package:food/pages/login.dart';
 import 'package:food/widget/widget_support.dart';
+import 'package:random_string/random_string.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../service/database.dart';
+import '../service/shaared_pref.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -33,6 +38,22 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       )));
+      String Id=randomAlphaNumeric(10);
+      Map<String,dynamic>addUserInfo={
+        "Name":namecontroller.text,
+        "Email":mailcontroller.text,
+        "wallet":"0",
+        "Id":Id,
+      };
+      await DatabaseMethods().adduserDetail(addUserInfo,Id);
+      await SharedPreferenceHelper().saveUserName(namecontroller.text);
+      await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);
+      await SharedPreferenceHelper().saveUserWallet('0');
+      await SharedPreferenceHelper().saveUserId(Id);
+
+
+
+
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const BottomNav()));
     } on FirebaseException catch (e) {
       if (e.code == 'weak-password') {
@@ -253,3 +274,5 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+
+
