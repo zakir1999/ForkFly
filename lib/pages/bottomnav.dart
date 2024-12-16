@@ -22,9 +22,11 @@ late Order order;
 @override
 void initState(){
   homepage=const Home();
-  wallet=const Wallet();
-  profile=const Profile();
   order=const Order();
+  profile=const Profile();
+  wallet=const Wallet();
+
+
   pages=[homepage,order,wallet,profile];
   super.initState();
 }

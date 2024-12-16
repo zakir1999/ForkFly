@@ -4,4 +4,7 @@ class DatabaseMethods{
   Future adduserDetail(Map<String,dynamic>userInfoMap,String id)async{
     return await FirebaseFirestore.instance.collection('users').doc(id).set(userInfoMap);
   }
+  UpdateUserwallet(String id,String amount)async{
+    return await FirebaseFirestore.instance.collection("users").doc(id).update({"wallet":amount});
+  }
 }
