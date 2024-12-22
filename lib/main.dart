@@ -6,10 +6,9 @@ import 'package:food/pages/onboard.dart';
 import 'package:food/widget/app_constant.dart';
 
 void main() async{
-  Stripe.publishableKey=publishableKey;
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey=publishableKey;
   await Firebase.initializeApp();
-  
   runApp(const MyApp());
 }
 

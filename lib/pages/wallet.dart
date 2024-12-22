@@ -224,8 +224,8 @@ class _WalletState extends State<Wallet> {
           .initPaymentSheet(
               paymentSheetParameters: SetupPaymentSheetParameters(
                   paymentIntentClientSecret: paymentIntent!['client_secret'],
-                  // applePay: const PaymentSheetApplePay(merchantCountryCode: '+92',),
-                  // googlePay: const PaymentSheetGooglePay(testEnv: true, currencyCode: "US", merchantCountryCode: "+92"),
+                  //applePay: const PaymentSheetApplePay(merchantCountryCode: '+92',),
+                  //googlePay: const PaymentSheetGooglePay(testEnv: true, currencyCode: "US", merchantCountryCode: "+92"),
                   style: ThemeMode.dark,
                   merchantDisplayName: 'Zakir'))
           .then((value) {});
@@ -388,5 +388,7 @@ class _WalletState extends State<Wallet> {
                 ),
               ),
             ),
-          ));
+          )
+  );
 }
+
