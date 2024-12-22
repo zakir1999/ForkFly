@@ -8,9 +8,10 @@ class AdminLogin extends StatefulWidget {
 }
 
 class _AdminLoginState extends State<AdminLogin> {
-  final GlobalKey<FormState>_formkey=GlobalKey<FormState>();
-  TextEditingController usernamecontroller =new TextEditingController();
-  TextEditingController userpasswordcontroller =new TextEditingController();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
+  TextEditingController usernamecontroller = new TextEditingController();
+  TextEditingController userpasswordcontroller = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,23 +26,39 @@ class _AdminLoginState extends State<AdminLogin> {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Color.fromARGB(255, 53, 51, 51), Color(0xFFff5c30)],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                ),
-                borderRadius: BorderRadius.vertical(top: Radius.elliptical(MediaQuery.of(context).size.width,110.0))
-              ),
+                  gradient: LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 53, 51, 51),
+                      Color(0xFFff5c30)
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.vertical(
+                      top: Radius.elliptical(
+                          MediaQuery.of(context).size.width, 110.0))),
             ),
             Container(
-              margin: EdgeInsets.only(left: 30.0,right: 30.0,top: 60.0),
+              margin: EdgeInsets.only(left: 30.0, right: 30.0, top: 60.0),
               child: Form(
                 key: _formkey,
-                child:Column(
+                child: Column(
                   children: [
-
+                    Text(
+                      "Let's start with \n  Admin!",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Material(
+                      elevation: 3.0,
+                    )
                   ],
-                ) ,
+                ),
               ),
             )
           ],
